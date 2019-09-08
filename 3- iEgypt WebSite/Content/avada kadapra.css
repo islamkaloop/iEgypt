@@ -1,0 +1,67 @@
+﻿
+body {
+    background-color:#b2d2e5;
+}
+
+.button {
+    border-radius: 12px;
+    display: inline-block;
+    padding: 10px 10px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: wavy;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    float: right;
+}
+
+    .button:hover {
+        box-shadow: 0 10px 10px 0 rgba(0,0,0,0.24), 0 12px 40px 0 rgba(0,0,0,0.19);
+    }
+
+.button1 {
+    border-radius: 12px;
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    display: inline-block;
+    padding: 10px 10px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #17537b;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-left: 47px;
+    margin-right: 0px;
+    margin-top: 56px;
+}
+
+    .button1:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+
+.input {
+    height:20px;
+    margin-left:100px;
+    border-radius: 60px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding-left: 5px;
+    background-color: #fff;
+}
+
+
+
+
