@@ -1,0 +1,177 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - iEgypt</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    
+    <style>
+
+        .search-box{
+            position:relative;
+            margin-top:5px;
+            background:#0026ff;
+            vertical-align:central;
+            height:40px;
+            border-radius:40px;
+            float:right;
+            text-align:center;
+
+        }
+        .search-btn{
+            align-items:center;
+            justify-content:center;
+            float:right;
+            display:flex;
+            border-radius:50%;
+            background:none;
+            width:40px;
+            height:40px;
+        }
+        
+        .search-txt{
+            border:none;
+            background:#0094ff;
+            outline:none;
+            float:left;
+            color:white;
+            font-size:16px;
+            line-height:40px;
+            text-align:center;
+            padding:8px 10px;
+            height:40px;
+            border-radius:40px;
+            width:200px;
+           
+        }
+        .control_li{
+		 		height: 40px;
+		 		background-color: black;
+		 		opacity: .8;
+		 		line-height: 40px;
+		 		text-align: center;
+		 		font-size: 16px;
+		 		margin-bottom: 5px;
+		 		}
+		 .control_a{
+		 	text-decoration: none;
+		 	color: white;
+		 	display: block;
+             padding:0 5px;
+		 }
+		 ul li a:hover {
+		 	background-color: green;
+		 }
+       
+    </style>
+
+</head>
+<body>
+     
+    <form runat="server">
+       
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" style="" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/">iEgypt</a>
+                </div>
+                <div class="navbar-collapse collapse" >
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/">Home</a></li>
+                    </ul>
+                    
+                    <div style="float:right; padding-right:10px">
+                    
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a runat="server" id="n1" href="~/Account/Register" >Register</a></li>
+                                    <li><a runat="server" id="n2" href="~/Account/Login">Log in</a></li>
+                                </ul>
+                          
+                     </div>
+                    <div class="search-box">
+                         <asp:DropDownList id="droplist" CssClass="search-txt" runat="server"  >
+                             <asp:ListItem style="background:#00ff90;color:#000000;"   value="0" Text="Select" Selected="True"/>
+                             <asp:ListItem style="background:#00ff90;color:#000000;"  value="1" Text="Original Content"/>
+                             <asp:ListItem style="background:#00ff90;color:#000000;"  value="2" Text="Contributor"/>
+                         </asp:DropDownList>
+                         <asp:LinkButton Cssclass="search-btn" runat="server" OnClick="Button1click">   
+                            <img style="width:30px; height:30px" src="search.ico" /> 
+                         </asp:LinkButton>
+                     </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="container body-content">
+            <div>
+                <div style="float:left;width:70%;">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" >
+                </asp:ContentPlaceHolder>
+                </div>
+                <div>
+       	            <ul style="
+                        float:right;
+                        margin: 0px;
+		 	            padding-top: 40px;
+                        padding-bottom: 40px;
+		 	            list-style: none;
+		 	            top:20%;
+		 	            " >
+	                    <li class="control_li"><a class="control_a" runat="server" id="SContr" >Show Contributors</a></li>
+	                    <li class="control_li"><a class="control_a" runat="server" id="SCont">Show Approved Original Content</a></li>
+                        <li class="control_li" runat="server" id="Deactive"><a class="control_a" runat="server" onserverclick="deact">Deactive My Profile</a></li>
+                           <li  class="control_li" runat="server" visible="false" id="view"><a class="control_a" runat="server" href="~/the viewer page.aspx">Functionalities</a>
+                           </li>
+                           <li  class="control_li" runat="server" visible="false" id="staff1"><a class="control_a" runat="server" href="~/Home.aspx">Functionalities</a>
+                           </li>
+                           <li runat="server" id="contru"></li>
+                           <li runat="server" id="staff"></li>
+
+
+                           <p style="margin:0 auto; padding-top:10px;text-align:center">&copy; <%: DateTime.Now.Year %> - iEgypt</p>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </form>
+    
+</body>
+</html>
